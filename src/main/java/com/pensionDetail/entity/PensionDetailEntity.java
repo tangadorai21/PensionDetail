@@ -11,8 +11,8 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 @javax.persistence.Entity
 public class PensionDetailEntity {
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer id;
+	
+    private Integer aadhar;
     private String name;
 	@JsonFormat(shape = JsonFormat.Shape.STRING ,pattern = "YYYY-MM-dd" , timezone="IST")
 	private Date dateOfBirth;
@@ -63,11 +63,13 @@ public class PensionDetailEntity {
 		return bankName;
 	}
 	
-	public Integer getId() {
-		return id;
+	
+	
+	public Integer getAadhar() {
+		return aadhar;
 	}
-	public void setId(Integer id) {
-		this.id = id;
+	public void setAadhar(Integer aadhar) {
+		this.aadhar = aadhar;
 	}
 	public void setBankName(String bankName) {
 		this.bankName = bankName;
@@ -85,9 +87,10 @@ public class PensionDetailEntity {
 		this.bankType = bankType;
 	}
 	
-	public PensionDetailEntity(Integer id) {
+	
+	public PensionDetailEntity(Integer aadhar) {
 		super();
-		this.id = id;
+		this.aadhar = aadhar;
 	}
 	public PensionDetailEntity(String name, Date dateOfBirth, String pan, double salary, double allowance,
 			String pensionType, String bankName, long accountNumber, String bankType) {

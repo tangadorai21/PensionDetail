@@ -19,12 +19,12 @@ public class PensionDetailServiceImpl implements IPensionDetailService {
 	@Override
 	public Integer saveDetail(PensionDetailEntity detail) {
 		PensionDetailEntity savedDetail =pensionDetailRepository.save(detail);
-		return savedDetail.getId();
+		return savedDetail.getAadhar();
 	}
 	@Override
-	public Optional<PensionDetailEntity> getDetail(Integer id) {
+	public Optional<PensionDetailEntity> getDetail(Integer aadhar) {
 		
-		return pensionDetailRepository.findById(id);
+		return pensionDetailRepository.findByAadhar(aadhar);
 	}
 
 	@Override
@@ -33,13 +33,13 @@ public class PensionDetailServiceImpl implements IPensionDetailService {
 	}
 
 	@Override
-	public void deleteDetail(Integer id) {
-		 pensionDetailRepository.deleteById(id);
+	public void deleteDetail(Integer aadhar) {
+		 pensionDetailRepository.deleteByAadhar(aadhar);
 		
 	}
 	@Override
-	public Integer updateDetail(PensionDetailEntity detail, Integer id) {
-		PensionDetailEntity existingDetail = pensionDetailRepository.findById(id).orElseThrow( () -> new ResourceNotFoundException("detail","id",id) );
+	public Integer updateDetail(PensionDetailEntity detail, Integer aadhar) {
+		PensionDetailEntity existingDetail = pensionDetailRepository.findByAadhar(aadhar).orElseThrow( () -> new ResourceNotFoundException("detail","aadhar",aadhar) );
 		existingDetail.setDateOfBirth(detail.getDateOfBirth());
 		existingDetail.setName(detail.getName());
 		existingDetail.setPan(detail.getPan());
@@ -50,7 +50,7 @@ public class PensionDetailServiceImpl implements IPensionDetailService {
 		existingDetail.setAccountNumber(detail.getAccountNumber());
 		existingDetail.setBankType(detail.getBankType());
 		pensionDetailRepository.save(existingDetail);
-			return existingDetail.getId();
+			return existingDetail.getAadhar();
 		
 	}
 

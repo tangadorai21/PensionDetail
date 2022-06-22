@@ -8,11 +8,11 @@ import com.pensionDetail.entity.PensionDetailEntity;
 
 public interface IPensionDetailService {
 Integer saveDetail(PensionDetailEntity detail);
-Optional<PensionDetailEntity> getDetail(Integer id);
+Optional<PensionDetailEntity> getDetail(Integer aadhar);
 
 public List<PensionDetailEntity> getALLDetails();
 
-public void deleteDetail(Integer id);
+public void deleteDetail(Integer aadhar);
 
-Integer updateDetail(PensionDetailEntity detail, Integer id);
+Integer updateDetail(PensionDetailEntity detail, Integer aadhar);
 }
